@@ -1,4 +1,4 @@
-package org.mk.todotasksh2;
+package com.mk.todotasksh2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
