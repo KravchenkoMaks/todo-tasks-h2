@@ -9,11 +9,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-//@SecurityScheme(
-//        name = "basicAuth",
-//        type = SecuritySchemeType.HTTP,
-//        scheme = "basic"
-////)
 public class SwaggerConfig {
 
     @Value("${app.version}")

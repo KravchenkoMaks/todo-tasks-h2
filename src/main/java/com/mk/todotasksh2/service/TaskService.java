@@ -67,7 +67,7 @@ public class TaskService {
             return tasksMapper.toTaskDto(task);
         }
         if (isNotAdmin() && (newState == TaskState.DONE || newState == TaskState.CANCELLED)) {
-            log.error("User trying to reassign task ID: {} which is not allowed", taskId);
+            log.error("Access to change status is prohibited");
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "error.NotAccessChangeState.message");
         }
         task.setState(TaskState.changeState(currentState, newState));
@@ -81,7 +81,7 @@ public class TaskService {
         User taskUser = task.getUser();
 
         if (taskUser != null && isNotAdmin()) {
-            log.error("User trying to reassign task ID: {} which is not allowed", taskId);
+            log.error("Access denied.");
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "error.AccessDenied.message");
         }
 
@@ -104,7 +104,7 @@ public class TaskService {
             tasksRepository.deleteById(id);
             log.debug("Task ID: {} successfully deleted", id);
         } else {
-            log.error("Task ID: {} not found", id);
+            log.error("Task ID{} not found", id);
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "error.tasks.NotFound.message");
         }
     }

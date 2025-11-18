@@ -1,7 +1,9 @@
 package com.mk.todotasksh2.model;
 
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 
+@Getter
 public enum Role implements GrantedAuthority {
     USER('u'),
     ADMIN('a');
@@ -10,10 +12,6 @@ public enum Role implements GrantedAuthority {
 
     Role(char dbData) {
         this.dbData = dbData;
-    }
-
-    public char getDbData() {
-        return dbData;
     }
 
     @Override
