@@ -93,7 +93,7 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         return userRepository.findByUsername(username)
-                .map(user -> new AppUserDetails(user))
+                .map(AppUserDetails::new)
                 .orElseThrow(() -> {
                     log.error("User not found: {}", username);
                     return new UsernameNotFoundException("Failed to retrieve user:" + username);
